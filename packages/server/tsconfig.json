@@ -1,0 +1,12 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"module": "NodeNext",
+		"noImplicitAny": true,
+		"removeComments": true,
+		"strict": true,
+		"importsNotUsedAsValues": "error",
+		"isolatedModules": true,
+		"target": "ESNext"
+	}
+}
