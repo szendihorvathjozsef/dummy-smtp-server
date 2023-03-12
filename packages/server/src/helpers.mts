@@ -1,11 +1,11 @@
+import { isAfter, isBefore, toDate } from "date-fns";
 import {
-	simpleParser,
-	Source,
+	AddressObject,
 	Headers,
 	ParsedMail,
-	AddressObject,
+	simpleParser,
+	Source,
 } from "mailparser";
-import { isBefore, isAfter, parseISO, parse, toDate } from "date-fns";
 
 interface ParseEmailOptions {
 	useHeaders: boolean;

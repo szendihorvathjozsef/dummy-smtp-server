@@ -1,12 +1,19 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
+		"target": "ESNext",
 		"module": "NodeNext",
+		"lib": ["ESNext"],
+		"outDir": "dist",
+		"allowJs": false,
+		"strict": true,
 		"noImplicitAny": true,
 		"removeComments": true,
-		"strict": true,
-		"importsNotUsedAsValues": "error",
 		"isolatedModules": true,
-		"target": "ESNext"
-	}
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"importsNotUsedAsValues": "error"
+	},
+	"exclude": ["../../node_modules"],
+	"include": ["src"]
 }

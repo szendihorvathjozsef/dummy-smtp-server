@@ -1,15 +1,17 @@
+import { join } from "node:path";
+
 import express from "express";
 import basicAuth from "express-basic-auth";
-import { join } from "node:path";
-import { EmailStore } from "./email-store";
-import { emailFilter } from "./helpers";
+
+import { EmailStore } from "./email-store.mjs";
+import { emailFilter } from "./helpers.mjs";
 
 interface ExpressServerOptions {
 	users: Record<string, string> | null;
 	staticDir?: string;
 }
 
-const resolveBuildDir = (dir = "dist/frontend") => join(__dirname, dir);
+const resolveBuildDir = (dir = "dist/frontend") => join(import.meta.url, dir);
 
 export function createExpressServer({
 	users,

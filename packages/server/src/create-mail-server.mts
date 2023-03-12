@@ -1,7 +1,8 @@
 import type { ParsedMail } from "mailparser";
 import { SMTPServer } from "smtp-server";
-import { EmailStore } from "./email-store";
-import { parseEmail } from "./helpers";
+
+import { EmailStore } from "./email-store.mjs";
+import { parseEmail } from "./helpers.mjs";
 
 interface CreateMailServerOptions {
 	allowList: unknown[];
@@ -23,7 +24,7 @@ export function createMailServer({
 	return new SMTPServer({
 		authOptional: true,
 		onMailFrom(address, _session, cb) {
-			if (allowList.length == 0 || allowList.indexOf(address.address) !== -1) {
+			if (allowList.length === 0 || allowList.indexOf(address.address) !== -1) {
 				cb();
 			} else {
 				cb(new Error("Invalid email from: " + address.address));

@@ -1,8 +1,7 @@
-import * as cli from "cli";
-import { SMTPServer } from "smtp-server";
-import { createExpressServer } from "./create-express-server";
-import { createMailServer } from "./create-mail-server";
-import { parseEmail } from "./helpers";
+import cli from "cli";
+
+import { createExpressServer } from "./create-express-server.mjs";
+import { createMailServer } from "./create-mail-server.mjs";
 
 const nextCli = cli.enable("catchall").enable("status");
 
@@ -33,7 +32,7 @@ if (config.auth && !/.+:.+/.test(config.auth)) {
 }
 
 if (config.auth) {
-	let authConfig = config.auth.split(":");
+	const authConfig = config.auth.split(":");
 	users = {};
 	users[authConfig[0]] = authConfig[1];
 }
