@@ -1,4 +1,4 @@
-import { Accordion } from "@chakra-ui/react";
+import { Accordion, Alert, AlertIcon, AlertTitle, Box } from "@chakra-ui/react";
 import { ParsedMail } from "mailparser";
 import * as React from "react";
 
@@ -9,6 +9,17 @@ type Props = {
 };
 
 const EmailList = ({ emails }: Props) => {
+	if (emails.length === 0) {
+		return (
+			<Box display="flex" justifyContent="center" alignItems="center" h="100%">
+				<Alert w="20rem" status="warning">
+					<AlertIcon />
+					<AlertTitle>There is no email sent.</AlertTitle>
+				</Alert>
+			</Box>
+		);
+	}
+
 	return (
 		<Accordion allowMultiple>
 			{emails.map(email => (

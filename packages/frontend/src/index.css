@@ -6,3 +6,17 @@
 .email-content p {
 	margin-bottom: 1rem;
 }
+
+html,
+body,
+#root {
+	height: 100%;
+}
+
+#root .chakra-container {
+	height: calc(100% - 90px);
+}
+
+#root main {
+	height: 100%;
+}

@@ -23,11 +23,19 @@ const Emails = () => {
 		await queryClient.invalidateQueries({ queryKey: QUERY_KEY });
 	}
 
+	console.log(emails.isFetching);
+
 	return (
-		<Container maxW="container.lg">
-			<Stack direction="row" alignItems="center">
+		<>
+			<Stack
+				px="4"
+				bgColor="blue.100"
+				as="header"
+				direction="row"
+				alignItems="center"
+			>
 				<Text flex="1" as="h1" fontSize="6xl">
-					Your arrived emails
+					Your emails
 				</Text>
 				<Button
 					isDisabled={emails.isLoading}
@@ -37,20 +45,22 @@ const Emails = () => {
 					Refresh
 				</Button>
 			</Stack>
-			<main>
-				{emails.data && <EmailList emails={emails.data} />}
-				{emails.error && (
-					<Alert status="error">
-						<AlertIcon />
-						<AlertTitle>Your emails couldn&apos;t be loaded.</AlertTitle>
-						<AlertDescription>Please, try it again later.</AlertDescription>
-					</Alert>
-				)}
-				{emails.isLoading && (
-					<CircularProgress isIndeterminate color="green.300" />
-				)}
-			</main>
-		</Container>
+			<Container maxW="container.lg">
+				<main>
+					{emails.data && <EmailList emails={emails.data} />}
+					{emails.error && (
+						<Alert status="error">
+							<AlertIcon />
+							<AlertTitle>Your emails couldn&apos;t be loaded.</AlertTitle>
+							<AlertDescription>Please, try it again later.</AlertDescription>
+						</Alert>
+					)}
+					{emails.isFetching && (
+						<CircularProgress isIndeterminate color="green.300" />
+					)}
+				</main>
+			</Container>
+		</>
 	);
 };
 
